@@ -1,2 +1,2 @@
 include:
-  - local: 'BaiTap7/.gitlab-ci.yml'
+  - local: "BaiTap7/.gitlab-ci.yml"

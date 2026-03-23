@@ -107,14 +107,14 @@ GitLab Pages là dịch vụ hosting miễn phí cho static websites, tích hợ
 
 ### 5.1 Đặc điểm
 
-| Tiêu chí | Chi tiết |
-|----------|----------|
-| **Chi phí** | Miễn phí 100% |
-| **Dung lượng** | 10 GB storage/repository |
-| **Bandwidth** | Không giới hạn |
-| **Custom domain** | Hỗ trợ |
-| **SSL** | Tự động qua Let's Encrypt |
-| **Runner** | Dùng shared runner của GitLab (không cần setup riêng) |
+| Tiêu chí          | Chi tiết                                              |
+| ----------------- | ----------------------------------------------------- |
+| **Chi phí**       | Miễn phí 100%                                         |
+| **Dung lượng**    | 10 GB storage/repository                              |
+| **Bandwidth**     | Không giới hạn                                        |
+| **Custom domain** | Hỗ trợ                                                |
+| **SSL**           | Tự động qua Let's Encrypt                             |
+| **Runner**        | Dùng shared runner của GitLab (không cần setup riêng) |
 
 ### 5.2 URL mặc định
 
@@ -168,14 +168,14 @@ pages:
 
 **Giải thích:**
 
-| Directive | Giá trị | Ý nghĩa |
-|-----------|---------|----------|
-| `stages` | `deploy` | Chỉ có 1 stage: deploy |
-| `pages` | - | Job tên `pages` (tên đặc biệt của GitLab Pages) |
-| `stage` | `deploy` | Job chạy ở stage deploy |
-| `script` | `echo ...` | Lệnh thực thi khi job chạy |
-| `artifacts.paths` | `public` | GitLab Pages deploy từ thư mục `public` |
-| `rules.if` | `$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH` | Chỉ chạy khi push lên branch `main` |
+| Directive         | Giá trị                                   | Ý nghĩa                                         |
+| ----------------- | ----------------------------------------- | ----------------------------------------------- |
+| `stages`          | `deploy`                                  | Chỉ có 1 stage: deploy                          |
+| `pages`           | -                                         | Job tên `pages` (tên đặc biệt của GitLab Pages) |
+| `stage`           | `deploy`                                  | Job chạy ở stage deploy                         |
+| `script`          | `echo ...`                                | Lệnh thực thi khi job chạy                      |
+| `artifacts.paths` | `public`                                  | GitLab Pages deploy từ thư mục `public`         |
+| `rules.if`        | `$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH` | Chỉ chạy khi push lên branch `main`             |
 
 ### Bước 4: Tạo static website
 
@@ -206,11 +206,11 @@ Tạo file `public/index.html`, `public/styles.css`, `public/js/main.js` với n
 
 Chụp ảnh minh chứng:
 
-| Ảnh | Mô tả | Location trong GitLab |
-|-----|--------|----------------------|
-| `pipeline-success.png` | Pipeline status: passed | CI/CD > Pipelines |
-| `pipeline-jobs.png` | Chi tiết jobs trong pipeline | CI/CD > Jobs |
-| `pages-url.png` | Live URL của GitLab Pages | Deploy > Pages |
+| Ảnh                    | Mô tả                        | Location trong GitLab |
+| ---------------------- | ---------------------------- | --------------------- |
+| `pipeline-success.png` | Pipeline status: passed      | CI/CD > Pipelines     |
+| `pipeline-jobs.png`    | Chi tiết jobs trong pipeline | CI/CD > Jobs          |
+| `pages-url.png`        | Live URL của GitLab Pages    | Deploy > Pages        |
 
 ---
 
@@ -284,6 +284,7 @@ pages:
 ### Câu 5: Làm sao để pipeline chỉ chạy trên branch `main`?
 
 > Dùng `rules` trong job:
+>
 > ```yaml
 > rules:
 >   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -292,6 +293,7 @@ pages:
 ### Câu 6: Muốn chạy pipeline trên mọi branch?
 
 > Bỏ `rules` hoặc dùng:
+>
 > ```yaml
 > rules:
 >   - if: $CI_COMMIT_BRANCH
@@ -301,13 +303,13 @@ pages:
 
 ## 9) Nguồn tham khảo
 
-| Nguồn | URL |
-|--------|-----|
-| GitLab CI/CD Quick Start | https://docs.gitlab.com/ee/ci/quick_start/ |
-| GitLab Pages - HTML Manual | https://docs.gitlab.com/ee/user/project/pages/getting_started/pages_html.html |
-| GitLab CI/CD YAML Reference | https://docs.gitlab.com/ee/ci/yaml/ |
-| GitLab CI/CD Pipelines | https://docs.gitlab.com/ee/ci/pipelines/ |
-| GitLab Pages Settings | https://docs.gitlab.com/ee/user/project/pages/ |
+| Nguồn                       | URL                                                                           |
+| --------------------------- | ----------------------------------------------------------------------------- |
+| GitLab CI/CD Quick Start    | https://docs.gitlab.com/ee/ci/quick_start/                                    |
+| GitLab Pages - HTML Manual  | https://docs.gitlab.com/ee/user/project/pages/getting_started/pages_html.html |
+| GitLab CI/CD YAML Reference | https://docs.gitlab.com/ee/ci/yaml/                                           |
+| GitLab CI/CD Pipelines      | https://docs.gitlab.com/ee/ci/pipelines/                                      |
+| GitLab Pages Settings       | https://docs.gitlab.com/ee/user/project/pages/                                |
 
 ---
 
@@ -332,13 +334,13 @@ pages:
 
 ## 11) Tiêu chí chấm điểm
 
-| Tiêu chí | Điểm |
-|----------|------|
-| **`.gitlab-ci.yml` cấu hình đúng cú pháp** | 20% |
-| **Pipeline chạy thành công (passed)** | 25% |
-| **GitLab Pages deploy hoạt động (live URL)** | 25% |
-| **Screenshots minh chứng đầy đủ** | 15% |
-| **Trả lời đúng các câu hỏi ôn tập** | 15% |
+| Tiêu chí                                     | Điểm |
+| -------------------------------------------- | ---- |
+| **`.gitlab-ci.yml` cấu hình đúng cú pháp**   | 20%  |
+| **Pipeline chạy thành công (passed)**        | 25%  |
+| **GitLab Pages deploy hoạt động (live URL)** | 25%  |
+| **Screenshots minh chứng đầy đủ**            | 15%  |
+| **Trả lời đúng các câu hỏi ôn tập**          | 15%  |
 
 ---
 
@@ -347,18 +349,18 @@ pages:
 ### .gitlab-ci.yml Syntax
 
 ```yaml
-stages:              # Khai báo danh sách stages (thứ tự chạy)
+stages: # Khai báo danh sách stages (thứ tự chạy)
   - build
   - test
   - deploy
 
-job-name:            # Tên job tự chọn
-  stage: build       # Thuộc stage nào
-  script:            # Lệnh shell thực thi
+job-name: # Tên job tự chọn
+  stage: build # Thuộc stage nào
+  script: # Lệnh shell thực thi
     - echo "Hello"
-  rules:             # Điều kiện chạy job
+  rules: # Điều kiện chạy job
     - if: $CI_COMMIT_BRANCH == "main"
-  artifacts:         # File output chia sẻ
+  artifacts: # File output chia sẻ
     paths:
       - output/
 ```
@@ -373,12 +375,12 @@ git push origin main
 
 ### Truy cập nhanh
 
-| Mục | Đường dẫn GitLab |
-|------|-----------------|
-| Pipelines | `Repository > CI/CD > Pipelines` |
-| Jobs | `Repository > CI/CD > Jobs` |
-| Pipeline Editor | `Repository > CI/CD > Editor` |
-| Pages Settings | `Settings > Pages` |
+| Mục             | Đường dẫn GitLab                 |
+| --------------- | -------------------------------- |
+| Pipelines       | `Repository > CI/CD > Pipelines` |
+| Jobs            | `Repository > CI/CD > Jobs`      |
+| Pipeline Editor | `Repository > CI/CD > Editor`    |
+| Pages Settings  | `Settings > Pages`               |
 
 ---
 
@@ -447,7 +449,7 @@ Mục tiêu: deploy không tự chạy, chỉ chạy khi người dùng bấm n�
 pages:
   stage: deploy
   rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
       when: manual
     - when: never
 ```
