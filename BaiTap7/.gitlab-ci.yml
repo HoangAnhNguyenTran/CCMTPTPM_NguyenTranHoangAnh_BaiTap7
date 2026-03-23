@@ -1,0 +1,48 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - when: never
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Building static site..."
+    - test -f public/index.html && echo "index.html exists" || exit 1
+    - test -f public/styles.css && echo "styles.css exists" || exit 1
+    - test -f public/js/main.js && echo "main.js exists" || exit 1
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 day
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+test:
+  stage: test
+  script:
+    - echo "Running basic checks..."
+    - grep -q "<title>" public/index.html || (echo "Missing <title> tag" && exit 1)
+  needs:
+    - build
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+pages:
+  stage: deploy
+  script:
+    - echo "Manual deploy to GitLab Pages"
+    - echo "Triggered at: $(date)"
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 day
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: manual
+    - when: never
